@@ -14,6 +14,11 @@ public class EventMaker : MonoBehaviour, IEventMake
         EventManager.Inst.RegisterCurEventMaker(true, this);
     }
 
+    private void OnDisable()
+    {
+        _eventInvokHandler = null;
+    }
+
     // 보통 Subscribe보다 Register 또는 AddEvent 등의 용어를 쓴다 - 예제는 구독이라는 의미로 그냥 사용
     public void Subscribe(bool isSubscribe, Action callback)
     {
