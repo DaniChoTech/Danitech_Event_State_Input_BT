@@ -1,5 +1,7 @@
+using System;
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using ViewModel.Extensions;
 
 public class PlayerView : MonoBehaviour
@@ -12,6 +14,8 @@ public class PlayerView : MonoBehaviour
 
     private PlayerViewModel _vm;
     private IState _curState;
+
+    private Action<InputAction.CallbackContext> _inputCallback;
 
     private void Start()
     {
