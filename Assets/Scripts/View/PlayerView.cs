@@ -19,7 +19,9 @@ public class PlayerView : MonoBehaviour
 
     public void ChangeState(IState newState)
     {
-
+        _curState?.ExitState();
+        _curState = newState;
+        _curState.EnterState();
     }
 
     private void OnEnable()
