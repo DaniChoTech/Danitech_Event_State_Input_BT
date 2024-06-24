@@ -22,13 +22,17 @@ public class IdleState : IState
     public void EnterState() 
     {
         _player.TextMesh_Level.text = "기본";
+        _player.BindInputCallback(true, OnInputCallback);
     }
 
     public void ExecuteOnUpdate() 
     {
     }
 
-    public void ExitState() { }
+    public void ExitState() 
+    {
+        _player.BindInputCallback(false, OnInputCallback);
+    }
 
     public void OnInputCallback(InputAction.CallbackContext context)
     {
