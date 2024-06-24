@@ -29,6 +29,14 @@ public class PlayerView : MonoBehaviour
         _curState.EnterState();
     }
 
+    public void BindInputCallback(bool isBind, Action<InputAction.CallbackContext> callback)
+    {
+        if (isBind)
+            _inputCallback += callback;
+        else
+            _inputCallback -= callback;
+    }
+
     private void OnEnable()
     {
         if (_vm == null)
