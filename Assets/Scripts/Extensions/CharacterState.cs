@@ -49,7 +49,8 @@ public class AtkState : IState
 
     public void ExecuteOnUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        var animInfo = _player.Animator_Player.GetCurrentAnimatorStateInfo(0);
+        if (animInfo.normalizedTime > 1)
         {
             _player.ChangeState(new IdleState(_player));
         }
