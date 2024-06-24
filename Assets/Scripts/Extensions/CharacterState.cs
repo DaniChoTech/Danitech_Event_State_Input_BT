@@ -17,7 +17,11 @@ public class IdleState : IState
         _player = player;
     }
 
-    public void EnterState() { }
+    public void EnterState() 
+    {
+        _player.TextMesh_Level.text = "기본";
+    }
+
     public void ExecuteOnUpdate() 
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -39,13 +43,15 @@ public class AtkState : IState
 
     public void EnterState() 
     {
-    
+        _player.Animator_Player.SetTrigger("Atk");
+        _player.TextMesh_Level.text = "공격";
     }
+
     public void ExecuteOnUpdate()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-
+            _player.ChangeState(new IdleState(_player));
         }
     }
 
