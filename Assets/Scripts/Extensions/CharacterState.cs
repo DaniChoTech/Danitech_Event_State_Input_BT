@@ -9,6 +9,19 @@ public interface IState
     void ExecuteOnUpdate();
 }
 
+public class IdleState : IState
+{
+    private readonly PlayerView _player;
+    public IdleState(PlayerView player)
+    {
+        _player = player;
+    }
+
+    public void EnterState() { }
+    public void ExecuteOnUpdate() { }
+    public void ExitState() { }
+}
+
 public class CharacterState
 {
 }
