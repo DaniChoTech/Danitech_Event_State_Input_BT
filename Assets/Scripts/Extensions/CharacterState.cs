@@ -34,6 +34,7 @@ public class IdleState : IState
     {
         if(context.action.name == "Atk")
         {
+            // 공격 Input 왔으니 여기서 상태 변경해주자
             _player.ChangeState(new AtkState(_player));
         }
     }
