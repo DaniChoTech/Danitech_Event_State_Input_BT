@@ -1,0 +1,51 @@
+{
+    "name": "InputActions",
+    "maps": [
+        {
+            "name": "PlayerAction",
+            "id": "54a9e98e-61cc-4965-8595-1bcb3274959b",
+            "actions": [
+                {
+                    "name": "Atk",
+                    "type": "Button",
+                    "id": "29f1b443-051e-4256-bc31-8b37f078da3e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2b78d491-c1ff-49ee-b78c-4e0ae08a4eae",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Atk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "PC",
+            "bindingGroup": "PC",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
