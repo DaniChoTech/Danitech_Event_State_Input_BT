@@ -37,6 +37,11 @@ public class PlayerView : MonoBehaviour
             _inputCallback -= callback;
     }
 
+    public void OnAtkInput(InputAction.CallbackContext context)
+    {
+        _inputCallback?.Invoke(context);
+    }
+
     private void OnEnable()
     {
         if (_vm == null)
