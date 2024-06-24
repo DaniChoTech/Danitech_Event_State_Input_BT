@@ -35,6 +35,11 @@ public class PlayerView : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        _curState?.ExecuteOnUpdate();
+    }
+
     private void OnDisable()
     {
         if (_vm != null)
