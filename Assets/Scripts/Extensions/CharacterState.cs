@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public interface IState
 {
     void EnterState();
     void ExitState();
     void ExecuteOnUpdate();
+    void OnInputCallback(InputAction.CallbackContext context);
 }
 
 public class IdleState : IState
@@ -24,13 +26,18 @@ public class IdleState : IState
 
     public void ExecuteOnUpdate() 
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+    }
+
+    public void ExitState() { }
+
+    public void OnInputCallback(InputAction.CallbackContext context)
+    {
+        if(context.action.name == "Atk")
         {
             _player.ChangeState(new AtkState(_player));
         }
     }
 
-    public void ExitState() { }
 }
 
 public class AtkState : IState
@@ -57,4 +64,5 @@ public class AtkState : IState
     }
 
     public void ExitState() { }
+    public void OnInputCallback(InputAction.CallbackContext context) { }
 }
