@@ -11,7 +11,15 @@ public interface IState
     void OnInputCallback(InputAction.CallbackContext context);
 }
 
-public class IdleState : IState
+public class StateBase : IState
+{
+    public virtual void EnterState() { }
+    public virtual void ExitState() { }
+    public virtual void ExecuteOnUpdate() { }
+    public virtual void OnInputCallback(InputAction.CallbackContext context) { }
+}
+
+public class IdleState : StateBase
 {
     private readonly PlayerView _player;
     public IdleState(PlayerView player)
@@ -19,22 +27,18 @@ public class IdleState : IState
         _player = player;
     }
 
-    public void EnterState() 
+    public override void EnterState() 
     {
         _player.TextMesh_Level.text = "기본";
         _player.BindInputCallback(true, OnInputCallback);
     }
 
-    public void ExecuteOnUpdate() 
-    {
-    }
-
-    public void ExitState() 
+    public override void ExitState() 
     {
         _player.BindInputCallback(false, OnInputCallback);
     }
 
-    public void OnInputCallback(InputAction.CallbackContext context)
+    public override void OnInputCallback(InputAction.CallbackContext context)
     {
         if(context.action.name == "Atk")
         {
@@ -42,10 +46,9 @@ public class IdleState : IState
             _player.ChangeState(new AtkState(_player));
         }
     }
-
 }
 
-public class AtkState : IState
+public class AtkState : StateBase
 {
     private readonly PlayerView _player;
     public AtkState(PlayerView player)
@@ -53,13 +56,13 @@ public class AtkState : IState
         _player = player;
     }
 
-    public void EnterState() 
+    public override void EnterState() 
     {
         _player.Animator_Player.SetTrigger("Atk");
         _player.TextMesh_Level.text = "공격";
     }
 
-    public void ExecuteOnUpdate()
+    public override void ExecuteOnUpdate()
     {
         var animInfo = _player.Animator_Player.GetCurrentAnimatorStateInfo(0);
         if (animInfo.normalizedTime > 1)
@@ -67,7 +70,4 @@ public class AtkState : IState
             _player.ChangeState(new IdleState(_player));
         }
     }
-
-    public void ExitState() { }
-    public void OnInputCallback(InputAction.CallbackContext context) { }
 }
