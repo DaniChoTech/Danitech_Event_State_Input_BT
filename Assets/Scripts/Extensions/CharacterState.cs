@@ -29,6 +29,25 @@ public class IdleState : IState
     public void ExitState() { }
 }
 
-public class CharacterState
+public class AtkState : IState
 {
+    private readonly PlayerView _player;
+    public AtkState(PlayerView player)
+    {
+        _player = player;
+    }
+
+    public void EnterState() 
+    {
+    
+    }
+    public void ExecuteOnUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+
+        }
+    }
+
+    public void ExitState() { }
 }
