@@ -22,7 +22,7 @@ public class IdleState : IState
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
+            _player.ChangeState(new AtkState(_player));
         }
     }
 
