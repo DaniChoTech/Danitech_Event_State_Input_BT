@@ -12,6 +12,16 @@ public class PlayerView : MonoBehaviour
     private PlayerViewModel _vm;
     private IState _curState;
 
+    private void Start()
+    {
+        ChangeState(new IdleState(this));
+    }
+
+    public void ChangeState(IState newState)
+    {
+
+    }
+
     private void OnEnable()
     {
         if (_vm == null)
