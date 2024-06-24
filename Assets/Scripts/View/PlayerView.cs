@@ -10,6 +10,7 @@ public class PlayerView : MonoBehaviour
     [SerializeField] GameObject Prefab_SpecialLevelUp;
 
     private PlayerViewModel _vm;
+    private IState _curState;
 
     private void OnEnable()
     {
