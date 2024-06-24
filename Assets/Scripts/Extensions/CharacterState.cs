@@ -18,7 +18,14 @@ public class IdleState : IState
     }
 
     public void EnterState() { }
-    public void ExecuteOnUpdate() { }
+    public void ExecuteOnUpdate() 
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+        }
+    }
+
     public void ExitState() { }
 }
 

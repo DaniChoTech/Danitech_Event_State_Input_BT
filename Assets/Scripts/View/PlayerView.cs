@@ -5,9 +5,10 @@ using ViewModel.Extensions;
 public class PlayerView : MonoBehaviour
 {
     [SerializeField] TextMesh TextMesh_Name;
-    [SerializeField] TextMesh TextMesh_Level;
-    [SerializeField] Animator Animator_Player;
     [SerializeField] GameObject Prefab_SpecialLevelUp;
+
+    public TextMesh TextMesh_Level;
+    public Animator Animator_Player;
 
     private PlayerViewModel _vm;
     private IState _curState;
