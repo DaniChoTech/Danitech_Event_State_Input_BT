@@ -39,6 +39,13 @@ public class PlayerView : MonoBehaviour
 
     public void OnAtkInput(InputAction.CallbackContext context)
     {
+        // Note: 키가 처음 눌려질때에 관해서만 처리
+        // 키가 계속 눌러진 경우(context.performed), 키를 뗀 경우는(context.canceled) 조건문 추가 별도 처리 필요
+        if (context.started)
+        {
+            return;
+        }
+
         _inputCallback?.Invoke(context);
     }
 
