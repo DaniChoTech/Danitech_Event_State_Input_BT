@@ -7,4 +7,9 @@ using UnityEngine;
 public class PetActionNode : IBTNode
 {
     Func<IBTNode.EBTNodeState> _onUpdate = null;
+
+    public PetActionNode(Func<IBTNode.EBTNodeState> onUpdate)
+    {
+        _onUpdate = onUpdate;
+    }
 }
