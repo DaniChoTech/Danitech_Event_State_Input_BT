@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 3083284991497262547}
   - component: {fileID: 5820093692897903719}
   - component: {fileID: 2986693195967398941}
+  - component: {fileID: 1982527065228009856}
   m_Layer: 0
   m_Name: Pet
   m_TagString: Untagged
@@ -201,6 +202,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.9839783
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1982527065228009856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077314591250696504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e18092e23b3c4d46ba983becc76878e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  _animator: {fileID: 5382048582394815068}
 --- !u!1 &4127787479842226268
 GameObject:
   m_ObjectHideFlags: 0

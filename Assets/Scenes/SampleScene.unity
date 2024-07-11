@@ -358,6 +358,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8db8d84780f9415478aed804ce3d62bd, type: 3}
+--- !u!1 &1054900059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 979650944014736374, guid: 8db8d84780f9415478aed804ce3d62bd, type: 3}
+  m_PrefabInstance: {fileID: 1054900058}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1244826248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -547,6 +552,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1982527065228009856, guid: a550aefc96b8cbe4a9fcb1d71f12c39e, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1054900059}
     - target: {fileID: 2077314591250696504, guid: a550aefc96b8cbe4a9fcb1d71f12c39e, type: 3}
       propertyPath: m_Name
       value: Pet
