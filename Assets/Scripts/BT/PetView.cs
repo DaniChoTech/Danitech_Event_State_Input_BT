@@ -61,4 +61,53 @@ public class PetView : MonoBehaviour
     }
 
    
+    // 따라오기 ============================================
+    public IBTNode.EBTNodeState CheckFollowingOnUpdate()
+    {
+        if (_foundedMob != null)
+            return IBTNode.EBTNodeState.Fail;
+
+        var distance = Vector3.Distance(_player.transform.position, this.transform.position);
+
+        if (distance < 0.5f)
+        {
+            return IBTNode.EBTNodeState.Fail;
+        }
+
+        return IBTNode.EBTNodeState.Success;
+    }
+
+    private void MoveToTargetPosition(Transform originTransform, Transform targetTransform)
+    {
+        Vector3 direction = (targetTransform.position - originTransform.position).normalized;
+        Vector3 move = direction * 1.0f * Time.deltaTime;
+        originTransform.LookAt(targetTransform.transform);
+        originTransform.position += move;
+    }
+
+    public IBTNode.EBTNodeState CheckPetFollowingRangeOnUpdate()
+    {
+        var distance = Vector3.Distance(_player.transform.position, this.transform.position);
+
+        if (distance > 0.5f)
+        {
+            MoveToTargetPosition(this.transform, _player.transform);
+            return IBTNode.EBTNodeState.Running;
+        }
+
+        _animator.SetTrigger("Atk");
+        return IBTNode.EBTNodeState.Success;
+    }
+
+    public IBTNode.EBTNodeState CompleteFollowOnUpdate()
+    {
+        if (IsAnimationRunning("Atk"))
+        {
+            return IBTNode.EBTNodeState.Running;
+        }
+
+        _animator.CrossFade("Atk", 0.1f);
+        // _animator.SetTrigger("LevelUp");
+        return IBTNode.EBTNodeState.Success;
+    }
 }
