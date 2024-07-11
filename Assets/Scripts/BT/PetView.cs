@@ -35,4 +35,30 @@ public class PetView : MonoBehaviour
     {
         _petBtRunner.Execute();
     }
+
+    IBTNode SetPetBT()
+    {
+        var followNodeList = new List<IBTNode>();
+        followNodeList.Add(new PetActionNode(CheckFollowingOnUpdate));
+        followNodeList.Add(new PetActionNode(CheckPetFollowingRangeOnUpdate));
+        followNodeList.Add(new PetActionNode(CompleteFollowOnUpdate));
+
+        var followSeqNode = new PetSequenceNode(followNodeList);
+
+        var patrolNodeList = new List<IBTNode>();
+        patrolNodeList.Add(new PetActionNode(PatrolEnemyOnUpdate));
+        patrolNodeList.Add(new PetActionNode(MoveToEnemyOnUpdate));
+
+        var pattrolSeqNode = new PetSequenceNode(patrolNodeList);
+
+        List<IBTNode> firstSelectNode = new List<IBTNode>();
+        firstSelectNode.Add(followSeqNode);
+        firstSelectNode.Add(pattrolSeqNode);
+        // firstSelectNode.Add(new PetActionNode(Test));
+
+        var firstNode = new PetSelectorNode(firstSelectNode);
+        return firstNode;
+    }
+
+   
 }
