@@ -110,4 +110,62 @@ public class PetView : MonoBehaviour
         // _animator.SetTrigger("LevelUp");
         return IBTNode.EBTNodeState.Success;
     }
+
+    public IBTNode.EBTNodeState PatrolEnemyOnUpdate()
+    {
+        var overlapCollider = Physics.OverlapSphere(this.transform.position, 10.0f, LayerMask.GetMask("Monster"));
+        if(overlapCollider != null && overlapCollider.Length > 0)
+        {
+            var firstCheckMob = overlapCollider[0].transform;
+            _foundedMob = firstCheckMob.gameObject;
+            
+            var distance = Vector3.Distance(_foundedMob.transform.position, this.transform.position);
+            if(distance < 0.5f)
+            {
+                _foundedMob = null;
+                return IBTNode.EBTNodeState.Fail;
+            }
+
+            return IBTNode.EBTNodeState.Success;
+        }
+        return IBTNode.EBTNodeState.Fail;
+    }
+
+    public IBTNode.EBTNodeState MoveToEnemyOnUpdate()
+    {
+        if(_foundedMob == null)
+        {
+            return IBTNode.EBTNodeState.Fail;
+        }
+
+        var distance = Vector3.Distance(_foundedMob.transform.position, this.transform.position);
+
+        if (distance > 0.5f)
+        {
+            MoveToTargetPosition(this.transform, _foundedMob.transform);
+            return IBTNode.EBTNodeState.Running;
+        }
+
+        _foundedMob = null;
+        return IBTNode.EBTNodeState.Success;
+    }
+
+    #region Util
+    private bool IsAnimationRunning(string animName)
+    {
+        if (_animator == null)
+            return false;
+
+        bool isRunning = false;
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName(animName))
+        {
+            var normalizedTime = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            isRunning = normalizedTime != 0 && normalizedTime < 1.0f;
+        }
+
+        return isRunning;
+    }
+    #endregion
 }
+
+
