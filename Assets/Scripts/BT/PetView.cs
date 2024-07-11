@@ -61,6 +61,13 @@ public class PetView : MonoBehaviour
     }
 
    
+
+    public IBTNode.EBTNodeState Test()
+    {
+        Debug.Log("요건 그냥 불러봤다.");
+        return IBTNode.EBTNodeState.Success;
+    }
+
     // 따라오기 ============================================
     public IBTNode.EBTNodeState CheckFollowingOnUpdate()
     {
