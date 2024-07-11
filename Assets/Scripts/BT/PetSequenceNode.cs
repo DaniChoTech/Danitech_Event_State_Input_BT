@@ -31,6 +31,8 @@ public class PetSequenceNode : IBTNode
             {
                 case IBTNode.EBTNodeState.Running:
                     return IBTNode.EBTNodeState.Running;
+                case IBTNode.EBTNodeState.Success:
+                    continue;
                 case IBTNode.EBTNodeState.Fail:
                     _currentChild = 0;
                     return IBTNode.EBTNodeState.Fail;
