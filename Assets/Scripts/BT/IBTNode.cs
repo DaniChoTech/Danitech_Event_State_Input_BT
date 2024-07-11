@@ -11,4 +11,5 @@ public interface IBTNode
         Running
     }
 
+    public EBTNodeState Evaluate();
 }
