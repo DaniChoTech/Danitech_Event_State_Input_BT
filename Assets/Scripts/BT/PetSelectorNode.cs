@@ -28,7 +28,9 @@ public class PetSelectorNode : IBTNode
             switch (childState)
             {
                 case IBTNode.EBTNodeState.Running:
+                    return IBTNode.EBTNodeState.Running;
                 case IBTNode.EBTNodeState.Success:
+                    return IBTNode.EBTNodeState.Success;
             }
         }
 
