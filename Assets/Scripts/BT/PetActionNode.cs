@@ -12,4 +12,16 @@ public class PetActionNode : IBTNode
     {
         _onUpdate = onUpdate;
     }
+
+    public IBTNode.EBTNodeState Evaluate()
+    {
+        if(_onUpdate == null)
+        {
+            return IBTNode.EBTNodeState.Fail;
+        }
+        else
+        {
+            return _onUpdate.Invoke();
+        }
+    }
 }
