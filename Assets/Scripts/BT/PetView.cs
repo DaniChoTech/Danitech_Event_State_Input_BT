@@ -16,6 +16,7 @@ public class PetBTRunner
         _rootNode.Evaluate();
     }
 }
+
 public class PetView : MonoBehaviour
 {
     PetBTRunner _petBtRunner;
@@ -24,4 +25,14 @@ public class PetView : MonoBehaviour
     [SerializeField] GameObject _player;
     [SerializeField] Animator _animator;
 
+
+    private void Awake()
+    {
+        _petBtRunner = new PetBTRunner(SetPetBT());
+    }
+
+    private void Update()
+    {
+        _petBtRunner.Execute();
+    }
 }
