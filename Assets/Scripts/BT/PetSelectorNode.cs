@@ -10,4 +10,28 @@ public class PetSelectorNode : IBTNode
     {
         _childNodeList = childNodeList;
     }
+
+    // 자식 -> Running이면 Running 반환
+    // 자식 -> Success이면 Success반환
+    // 자식 -> Fail이면 다음 다식 실행
+    public IBTNode.EBTNodeState Evaluate()
+    {
+        if(_childNodeList == null)
+        {
+            return IBTNode.EBTNodeState.Fail;
+        }
+
+        foreach(var child in _childNodeList)
+        {
+            // 자식 노드의 상태를 가져옴
+            var childState = child.Evaluate();
+            switch (childState)
+            {
+                case IBTNode.EBTNodeState.Running:
+                case IBTNode.EBTNodeState.Success:
+            }
+        }
+
+        return IBTNode.EBTNodeState.Fail;
+    }
 }
